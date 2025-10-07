@@ -1,2 +1,3 @@
-﻿  Kefufflecpp.cpp
-  Kefufflecpp.vcxproj -> C:\Users\izthi\source\repos\Kefufflecpp\x64\Debug\Kefufflecpp.exe
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(538,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Kefufflecpp.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  LINK : C:\Users\izthi\source\repos\Kerfufflecpp\x64\Debug\Kerfufflecpp.exe not found or not built by the last incremental link; performing full link
+  Kefufflecpp.vcxproj -> C:\Users\izthi\source\repos\Kerfufflecpp\x64\Debug\Kerfufflecpp.exe

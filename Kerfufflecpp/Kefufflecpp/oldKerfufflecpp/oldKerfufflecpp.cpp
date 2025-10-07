@@ -1,8 +1,16 @@
 #include <iostream>
 #include <string>
 
+void facebook(std::string, std::string);
+void twitter(std::string, std::string);
+void whitepages(std::string, std::string, int);
+void google(std::string, std::string);
+void usphonelookup(std::string);
+void searchpeoplefree(std::string, std::string, int);
+void truepeoplesearch(std::string, std::string, int);
 void experimental(std::string, std::string);
 void moreStuff();
+
 
 int main()
 {
@@ -13,7 +21,7 @@ int main()
         "|    | \\  ___/|  | \\/|  | |  |  /|  |   |  |    |  |_\\  ___/\n"
         "|____|__\\___  >__|   |__| |____/ |__|   |__|    |____/\\___ >\n"
         "       \\/   \\/                                            \\/\n"
-        "Â©2024 Inf Potentiality\n\n");
+        "©2024 Inf Potentiality\n\n");
     while (true)
     {
         std::cout << ("\033[1;m\n"
@@ -34,9 +42,9 @@ int main()
         int nameNum;
         std::string name;
         std::string num;
-        std::cout << "\033[1;mInput service: ";
+        std::cout << "\033[1;m Input service: ";
         std::cin >> menu;
-        if (menu > 0 && menu < 99)
+        if (menu != 100)
         {
             std::cout << "PLEASE NOTE: Many of these services rely on either names or numbers, "
                 "so the chosen service may not work if one or both of the inputs are left blank." << std::endl;
@@ -50,10 +58,10 @@ int main()
         switch (menu)
         {
         case 1:
-            system(("start https://www.facebook.com/search/top/?q=" + name + "+" + num).c_str());
+            facebook(name, num);
             break;
         case 2:
-            system(("start https://twitter.com/search?q=" + name + "+" + num).c_str());
+            twitter(name, num);
             break;
         case 3:
             std::cout << "This service takes only either the name or number of a target; not both." << std::endl;
@@ -61,47 +69,33 @@ int main()
             {
                 std::cout << "Enter '1' if you would like to search the name, or '2' if you would like to search the number: ";
                 std::cin >> nameNum;
-                if (nameNum != 1 && nameNum != 2)
+                if (nameNum == 1 || nameNum == 2)
                 {
-                    std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
+                    whitepages(name, num, nameNum);
                 }
                 else {
-                    if (nameNum == 1)
-                    {
-                        system(("start https://www.whitepages.com/name/" + name).c_str());
-                    }
-                    else if (nameNum == 2)
-                    {
-                        system(("start https://www.whitepages.com/phone/" + num).c_str());
-                    }
+                    std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
                 }
             }
             break;
         case 4:
-            system(("start https://www.google.com/search?q=" + name + "+" + num).c_str());
+            google(name, num);
             break;
         case 5:
-            system(("start https://www.usphonebook.com/" + num).c_str());
+            usphonelookup(num);
             break;
         case 6:
             while (true)
             {
                 std::cout << "Enter '1' if you would like to search the name, or '2' if you would like to search the number: ";
                 std::cin >> nameNum;
-                if (nameNum != 1 && nameNum != 2)
+                if (nameNum == 1 || nameNum == 2)
                 {
-                    std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
+                    searchpeoplefree(name, num, nameNum);
                 }
                 else
                 {
-                    if (nameNum == 1)
-                    {
-                        system(("start https://www.searchpeoplefree.com/find/" + name).c_str());
-                    }
-                    else if (nameNum == 2)
-                    {
-                        system(("start https://www.searchpeoplefree.com/phone-lookup/find/" + num).c_str());
-                    }
+                    std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
                 }
             }
             break;
@@ -111,35 +105,19 @@ int main()
             {
                 std::cout << "Enter '1' if you would like to search the name, or '2' if you would like to search the number: ";
                 std::cin >> nameNum;
-                if (nameNum != 1 && nameNum != 2)
+                if (nameNum == 1 || nameNum == 2)
                 {
-                    std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
+                    truepeoplesearch(name, num, nameNum);
                 }
                 else {
-                    if (nameNum == 1)
-                    {
-                        system(("start https://www.truepeoplesearch.com/results?name=" + name).c_str());
-                    }
-                    else if (nameNum == 2)
-                    {
-                        system(("start https://www.truepeoplesearch.com/resultphone?phoneno=" + num).c_str());
-                    }
+                    std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
                 }
             }
             break;
         case 98:
-            system(("start https://www.facebook.com/search/top/?q=" + name + "+" + num).c_str());
-            system(("start https://twitter.com/search?q=" + name + "+" + num).c_str());
-            system(("start https://www.whitepages.com/name/" + name).c_str());
-            system(("start https://www.whitepages.com/phone/" + num).c_str());
-            system(("start https://www.google.com/search?q=" + name + "+" + num).c_str());
-            system(("start https://www.usphonebook.com/" + num).c_str());
-            system(("start https://www.searchpeoplefree.com/find/" + name).c_str());
-            system(("start https://www.searchpeoplefree.com/phone-lookup/find/" + num).c_str());
-            system(("start https://www.truepeoplesearch.com/results?name=" + name).c_str());
-            system(("start https://www.truepeoplesearch.com/resultphone?phoneno=" + num).c_str());
             break;
         case 99:
+            experimental(name, num);
             std::cout << "\033[1;34mOne of the most simplistic and sub-par lookup tools ever made, mostly out of boredom. Input the name and/or number(s) of who you wanna find, and the OSINT gods bestow their knowledege upon thee (if any).\033[1;m";
             break;
         case 100:
@@ -153,6 +131,76 @@ int main()
     }
 }
 
+void facebook(std::string name, std::string num)
+{
+    system(("start https://www.facebook.com/search/top/?q=" + name + "+" + num).c_str());
+}
+
+void twitter(std::string name, std::string num)
+{
+    system(("start https://twitter.com/search?q=" + name + "+" + num).c_str());
+}
+
+void whitepages(std::string name, std::string num, int nameNum) {
+    if (nameNum == 1)
+    {
+        system(("start https://www.whitepages.com/name/" + name).c_str());
+    }
+    else if (nameNum == 2)
+    {
+        system(("start https://www.whitepages.com/phone/" + num).c_str());
+    }
+}
+
+void google(std::string name, std::string num)
+{
+    system(("start https://www.google.com/search?q=" + name + "+" + num).c_str());
+}
+
+void usphonelookup(std::string num)
+{
+    system(("start https://www.usphonebook.com/" + num).c_str());
+}
+
+void searchpeoplefree(std::string name, std::string num, int nameNum)
+{
+    if (nameNum == 1)
+    {
+        system(("start https://www.searchpeoplefree.com/find/" + name).c_str());
+    }
+    else if (nameNum == 2)
+    {
+        system(("start https://www.searchpeoplefree.com/phone-lookup/find/" + num).c_str());
+    }
+
+}
+
+void truepeoplesearch(std::string name, std::string num, int nameNum)
+{
+    if (nameNum == 1)
+    {
+        system(("start https://www.truepeoplesearch.com/results?name=" + name).c_str());
+    }
+    else if (nameNum == 2)
+    {
+        system(("start https://www.truepeoplesearch.com/resultphone?phoneno=" + num).c_str());
+    }
+}
+
+void experimental(std::string name, std::string num)
+{
+    system(("start https://www.facebook.com/search/top/?q=" + name + "+" + num).c_str());
+    system(("start https://twitter.com/search?q=" + name + "+" + num).c_str());
+    system(("start https://www.whitepages.com/name/" + name).c_str());
+    system(("start https://www.whitepages.com/phone/" + num).c_str());
+    system(("start https://www.google.com/search?q=" + name + "+" + num).c_str());
+    system(("start https://www.usphonebook.com/" + num).c_str());
+    system(("start https://www.searchpeoplefree.com/find/" + name).c_str());
+    system(("start https://www.searchpeoplefree.com/phone-lookup/find/" + num).c_str());
+    system(("start https://www.truepeoplesearch.com/results?name=" + name).c_str());
+    system(("start https://www.truepeoplesearch.com/resultphone?phoneno=" + num).c_str());
+}
+
 void moreStuff()
 {
     std::cout << ("\033[0;32m\n"
@@ -162,7 +210,7 @@ void moreStuff()
         "| |\\/| |/ _ \\| '__/ _ \\ / __| __| | | |  _|  _|\n"
         "| |  | | (_) | | |  __  \\__ \\ |_| |_| | | | |\n"
         "|_|  |_|\\___/|_|  \\___| |___/\\__|\\____|_| |_|\n"
-        "Still Â©2024 Inf Potentiality\n");
+        "Still ©2024 Inf Potentiality\n");
     while (true)
     {
         std::cout << ("\033[1;m\n"
@@ -173,7 +221,7 @@ void moreStuff()
             "==============================\n\n"
             "\033[1;36m 99. About\033[1;33m 0. Exit\033[1;m\n");
         int menu;
-        std::cout << "\033[1;mInput service: ";
+        std::cout << "\033[1; m Input service: ";
         std::cin >> menu;
         if (menu == 0)
         {
