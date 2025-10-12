@@ -1,10 +1,14 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 void experimental(std::string, std::string);
 void moreStuff();
 
 int main() {
+    const std::vector<std::string> webNames = {"https://www.facebook.com/search/top/?q=", "https://twitter.com/search?q=", "https://www.whitepages.com/name/", "https://www.whitepages.com/phone/",
+    "https://www.google.com/search?q=", "https://www.usphonebook.com/", "https://www.searchpeoplefree.com/find/", "https://www.searchpeoplefree.com/phone-lookup/find/",
+    "https://www.truepeoplesearch.com/results?name=", "https://www.truepeoplesearch.com/resultphone?phoneno="};
     std::cout << ("\033[1;35m\n"
         "__________.             _____       _____  _____.__\n"
         "|    |/ _|_____________/ ____\\_ ___/ ____\\/ ____\\  |   ____\n"
@@ -46,10 +50,10 @@ int main() {
         }
         switch (menu) {
         case 1:
-            system(("start https://www.facebook.com/search/top/?q=" + name + "+" + num).c_str());
+            system(("start " + webNames[0] + name + "+" + num).c_str());
             break;
         case 2:
-            system(("start https://twitter.com/search?q=" + name + "+" + num).c_str());
+            system(("start " + webNames[1] + name + "+" + num).c_str());
             break;
         case 3:
             std::cout << "This service takes only either the name or number of a target; not both." << std::endl;
@@ -61,19 +65,19 @@ int main() {
                 }
                 else {
                     if (nameNum == 1) {
-                        system(("start https://www.whitepages.com/name/" + name).c_str());
+                        system(("start " + webNames[2] + name).c_str());
                     }
                     else if (nameNum == 2) {
-                        system(("start https://www.whitepages.com/phone/" + num).c_str());
+                        system(("start " + webNames[3] + num).c_str());
                     }
                 }
             }
             break;
         case 4:
-            system(("start https://www.google.com/search?q=" + name + "+" + num).c_str());
+            system(("start " + webNames[4] + name + "+" + num).c_str());
             break;
         case 5:
-            system(("start https://www.usphonebook.com/" + num).c_str());
+            system(("start " + webNames[5] + num).c_str());
             break;
         case 6:
             while (true) {
@@ -84,10 +88,10 @@ int main() {
                 }
                 else {
                     if (nameNum == 1) {
-                        system(("start https://www.searchpeoplefree.com/find/" + name).c_str());
+                        system(("start " + webNames[6] + name).c_str());
                     }
                     else if (nameNum == 2) {
-                        system(("start https://www.searchpeoplefree.com/phone-lookup/find/" + num).c_str());
+                        system(("start " + webNames[7] + num).c_str());
                     }
                 }
             }
@@ -102,25 +106,25 @@ int main() {
                 }
                 else {
                     if (nameNum == 1) {
-                        system(("start https://www.truepeoplesearch.com/results?name=" + name).c_str());
+                        system(("start " + webNames[8] + name).c_str());
                     }
                     else if (nameNum == 2) {
-                        system(("start https://www.truepeoplesearch.com/resultphone?phoneno=" + num).c_str());
+                        system(("start " + webNames[9] + num).c_str());
                     }
                 }
             }
             break;
         case 98:
-            system(("start https://www.facebook.com/search/top/?q=" + name + "+" + num).c_str());
-            system(("start https://twitter.com/search?q=" + name + "+" + num).c_str());
-            system(("start https://www.whitepages.com/name/" + name).c_str());
-            system(("start https://www.whitepages.com/phone/" + num).c_str());
-            system(("start https://www.google.com/search?q=" + name + "+" + num).c_str());
-            system(("start https://www.usphonebook.com/" + num).c_str());
-            system(("start https://www.searchpeoplefree.com/find/" + name).c_str());
-            system(("start https://www.searchpeoplefree.com/phone-lookup/find/" + num).c_str());
-            system(("start https://www.truepeoplesearch.com/results?name=" + name).c_str());
-            system(("start https://www.truepeoplesearch.com/resultphone?phoneno=" + num).c_str());
+            system(("start " + webNames[0] + name + "+" + num).c_str());
+            system(("start " + webNames[1] + name + "+" + num).c_str());
+            system(("start " + webNames[2] + name).c_str());
+            system(("start " + webNames[3] + num).c_str());
+            system(("start " + webNames[4] + name + "+" + num).c_str());
+            system(("start " + webNames[5] + num).c_str());
+            system(("start " + webNames[6] + name).c_str());
+            system(("start " + webNames[7] + num).c_str());
+            system(("start " + webNames[8] + name).c_str());
+            system(("start " + webNames[9] + num).c_str());
             break;
         case 99:
             std::cout << "\033[1;34mOne of the most simplistic and sub-par lookup tools ever made, mostly out of boredom. Input the name and/or number(s) of who you wanna find, and the OSINT gods bestow their knowledege upon thee (if any).\033[1;m";
