@@ -140,21 +140,25 @@ void queryNumber(std::string url) {
 }
 
 void experimentalInput(std::string url, std::string name, std::string num, std::string query, bool isCombined) {
-    if (!isCombined) {
-        std::replace(query.begin(), query.end(), ' ', '+');
+    if (url == WHITEPAGES_QUERY_URL_NAME) { //whitepages takes - for space char because they suck
+        std::replace(query.begin(), query.end(), ' ', '-');
+        printf((url + query + "\n").c_str());
         system(("start " + url + query).c_str());
+
         return;
     }
 
-    if (url != WHITEPAGES_QUERY_URL_NAME) { //whitepages takes - for space char because they suck
-        std::replace(query.begin(), query.end(), ' ', '-');
+    if (!isCombined) {
+
+        std::replace(query.begin(), query.end(), ' ', '+');
         system(("start " + url + query).c_str());
+        printf((url + query + "\n").c_str());
         return;
     }
 
     query = name + "+" + num;
     std::replace(query.begin(), query.end(), ' ',  '+');
-
+    printf((url + query + "\n").c_str());
     system(("start " + url + query).c_str());
 }
 
@@ -197,6 +201,57 @@ void handleOption(OPTION option) {
         break;
 
     case Other:
+        otherStuff();
+        break;
+    }
+}
+
+void otherStuff() {
+    printf("\033[0;32m\n"
+        "___  ___                     _          __  ___\n"
+        "|  \\/  |                    | |        / _|/ __|\n"
+        "| \\  / | ___  _ __ ___   ___| |_ _   _| |_| |_\n"
+        "| |\\/| |/ _ \\| '__/ _ \\ / __| __| | | |  _|  _|\n"
+        "| |  | | (_) | | |  __  \\__ \\ |_| |_| | | | |\n"
+        "|_|  |_|\\___/|_|  \\___| |___/\\__|\\____|_| |_|\n"
+        "Still ©2024 Inf Potentiality\n");
+
+    while (running) {
+        std::cout << ("\033[1;m\n"
+            "==============================\n"
+            "\033[1;34m\n"
+            "1. DoS-ish\n"
+            "2. Network Discovery Off\n"
+            "3. Network Discovery On\n"
+            "\033[1;m\n"
+            "==============================\n\n"
+            "\033[1;36m 99. About\033[1;33m 0. Exit\033[1;m\n\n"
+            );
+
+        printf("Select service: ");
+        int option_num;
+        std::cin >> option_num;
+
+        OTHEROPTION option = static_cast<OTHEROPTION>(option_num);
+
+        handleOtherOption(option);
+    }
+    
+}
+
+void handleOtherOption(OTHEROPTION option) {
+    switch (option) {
+    case Exit: 
+        running = false;
+        break;
+    case DoS:
+        break;
+    case NetworkDiscoveryOff:
+        break;
+    case NetworkDiscoveryOn:
+        break;
+    case About:
+        printf("\nsame diff but with cooler shi\n");
         break;
     }
 }
@@ -221,7 +276,6 @@ std::string askNum() {
 
 void searchUrl(std::string url, std::string query) {
     std::replace(query.begin(), query.end(), ' ',  '+');
-
     system(("start " + url + query).c_str());
 }
 

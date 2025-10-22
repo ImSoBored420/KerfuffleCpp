@@ -25,7 +25,9 @@ enum OPTION {
 
 enum OTHEROPTION {
 
-    DoS = 1
+    DoS = 1,
+    NetworkDiscoveryOff = 2,
+    NetworkDiscoveryOn = 3,
 
 };
 
@@ -48,9 +50,11 @@ void google();
 void searchpeoplefree();
 void truepeoplesearch();
 void experimental();
+void otherStuff();
 //new things go here
 
 void handleOption(OPTION option);
+void handleOtherOption(OTHEROPTION option);
 
 std::string askName();
 std::string askNum();
