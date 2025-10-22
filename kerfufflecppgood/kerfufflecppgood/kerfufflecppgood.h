@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <stdio.h>
+#include <windows.h>
 
 enum OPTION {
     Exit, //enum is 0-whatever
@@ -51,6 +52,11 @@ void searchpeoplefree();
 void truepeoplesearch();
 void experimental();
 void otherStuff();
+
+void dos();
+void doDos(int bytes, int instances, std::string target);
+void networkDiscoveryOff();
+void networkDiscoveryOn();
 //new things go here
 
 void handleOption(OPTION option);
